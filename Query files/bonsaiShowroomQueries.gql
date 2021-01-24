@@ -1,0 +1,110 @@
+query AboutUsPageQuery {
+  page(id: "about-us", idType: URI) {
+    id
+    aboutUsMeta {
+      aboutUsPageDescription
+      aboutUsPageHeaderPicture{
+        altText
+      }
+    }
+  }
+}
+
+query ContactPageQuery {
+  page(id: "contact", idType: URI) {
+    id
+    contactMeta {
+      contactPageCity
+      contactPageEmail
+      contactPagePhone
+      contactPageAddress
+      contactPageLatitude
+      contactPageLongitude
+      contactPageDescription
+      contactPageHeaderPicture {
+        altText
+      }
+    }
+  }
+}
+
+query BonsaiPageQuery {
+  page(id: "bonsai-trees", idType: URI) {
+    id
+    bonsaisMeta {
+			bonsaiPageDescription
+      bonsaiPageHeaderPicture {
+        altText
+      }
+    }
+  }
+}
+
+query HomePageQuery {
+  page(id: "home-page", idType: URI) {
+    id
+    homeMeta {
+      homePageDescription
+      homePageHeaderTitle
+      homePageHeaderPicture {
+        altText
+      }
+      homePageFeaturedBonsais {
+        ... on BonsaiTree {
+          id
+          bonsai {
+            fieldGroupName
+            artist
+            size
+            tree
+          }
+        }
+      }
+      homePageHeaderDescription
+    }
+  }
+}
+
+query AllBonsaiQuery {
+  bonsaiTrees {
+    edges {
+      node {
+        bonsai {
+          artist
+          fieldGroupName
+          size
+          tree
+        }
+      }
+    }
+  }
+}
+
+query GenericBonsaiQuery($id: ID!) {
+  bonsaiTree(id: $id, idType: ID) {
+    bonsai {
+      artist
+      fieldGroupName
+      pictures {
+        picture3 {
+          altText
+        }
+        picture2 {
+          altText
+        }
+        picture1 {
+          altText
+        }
+      }
+      size
+      tree
+    }
+    styles {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}
