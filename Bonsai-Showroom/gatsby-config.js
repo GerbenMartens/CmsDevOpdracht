@@ -11,7 +11,7 @@ module.exports = {
       options: {      
       typeName: "WPGraphql",      
       fieldName: "wpcontent",      
-      url: "http://bonsaishowroom.com/graphql",      
+      url: "http://bonsaishowroom.local/graphql",      
       },      
     },
     {
